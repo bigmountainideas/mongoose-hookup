@@ -13,7 +13,8 @@ Mongoose Hookup is a [Mongoose](http://www.mongoosejs.com/) connection manager.
 
     var mongoosehookup = require('mongoose-hookup');
     var hookup = mongoosehookup(1000);
-    
+
+    // Single connection
     hookup.connect('localhost/db_name',function(err,conn){
       
       if( err){
@@ -22,10 +23,23 @@ Mongoose Hookup is a [Mongoose](http://www.mongoosejs.com/) connection manager.
         // use connection
       }
     });
-    
+
+    // Multiple connections in one
+    hookup.connect([
+      'localhost/db_name',
+      'localhost/db_name_2'],
+      function(err,conn){
+      
+      if( err){
+        // handle error
+      }else{
+        // use connection
+      }
+    });
+
+    // Retrieve a connection by database name
     var conn = hookup.getConnection('db_name');
     
-
 ## License
 
 (The MIT License)
