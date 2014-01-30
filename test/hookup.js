@@ -62,5 +62,22 @@ describe('Hookup', function(done){
   
   
   
+  it('should return an {Array} of 2 mongoose Connection objects', function(done){
+    
+    h.connect( 
+      [ connection.host+'/testdb1',
+        connection.host+'/testdb2'],
+    function(err){
+      
+      h.connectionList().should.be
+        .instanceof(Array)
+        .and.have.lengthOf(2);
+      
+      done()
+    });
+    
+  })
+  
+  
   
 })
